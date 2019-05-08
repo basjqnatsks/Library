@@ -15,7 +15,7 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.remote.webdriver import WebDriver
 class chrome:
-	def __new__(cls, driver_version='73.0.3683.20', *args):
+	def __new__(cls, driver_version='74.0.3729.6', headless=None, proxies=None, script=None, location=None, Desired_Capabilities=None, pageLoadStrategy=None, roblox_schemes=None, useragent=None, userdata=None):
 		cls.__init__(cls)
 
 
@@ -26,8 +26,8 @@ class chrome:
 
 
 		cls.Check_And_install_Chrome_Driver(cls)
-		cls.chrome(cls, args)
-		return cls
+		cls.chrome(cls, headless, proxies, script, location, Desired_Capabilities, pageLoadStrategy, roblox_schemes, useragent, userdata)
+		return cls.var
 	def __init__(self):
 		self.headless_JS = """
 		Object.defineProperty(navigator, 'webdriver', {
@@ -103,11 +103,11 @@ class chrome:
 			raise Exception(response.get('value'))
 		return response.get('value')
 	def add_script(self, driver, script):
-		self.send(driver, "Page.addScriptToEvaluateOnNewDocument", {"source": script})
+		self.send(self, driver, "Page.addScriptToEvaluateOnNewDocument", {"source": script})
 
 
 
-	def chrome(self, headless=None, proxies=None, script=None, location=None, Desired_Capabilities=None, pageLoadStrategy=None, roblox_schemes=None, useragent=None, userdata=None):
+	def chrome(self, headless : bool, proxies : str, script : str, location : str, Desired_Capabilities : bool, pageLoadStrategy : bool, roblox_schemes : bool, useragent : str, userdata : str):
 		WebDriver.add_script = self.add_script
 		chrome_options = webdriver.ChromeOptions()
 		chrome_options.add_argument('--mute-audio')
