@@ -28,7 +28,7 @@ class chrome:
 		cls.Check_And_install_Chrome_Driver(cls)
 		cls.chrome(cls, headless, proxies, script, location, Desired_Capabilities, pageLoadStrategy, roblox_schemes, useragent, userdata)
 		return cls.var
-	def __init__(self):
+	def __init__(self, driver_version='74.0.3729.6', headless=None, proxies=None, script=None, location=None, Desired_Capabilities=None, pageLoadStrategy=None, roblox_schemes=None, useragent=None, userdata=None):
 		self.headless_JS = """
 		Object.defineProperty(navigator, 'webdriver', {
 			get: () => false,
