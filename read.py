@@ -10,7 +10,7 @@ class read(object):
             var = f.read().decode(self.Encoding)
             if self.Remove:
                 for x in self.Remove:
-                    var.replace(x, "")
+                    var = var.replace(x, "")
         return var
 class FileLength(object):
     def __new__(cls, FileString=None):
