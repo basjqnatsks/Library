@@ -1,11 +1,12 @@
 class read(object):
-    def __new__(cls, filename: str, delim: str = None) -> open:
+    def __new__(cls, filename: str, delim: str = None, Encoding : str ="ISO-8859-1") -> open:
+        cls.Encoding = Encoding
         if delim != None:
             return cls.fileread(cls, filename).split(delim)
         return cls.fileread(cls, filename)
-    def fileread(self, filename: str) -> [open]:
+    def fileread(self, filename: str) -> open:
         with open(filename, "rb") as f:
-            var = f.read().decode("ISO-8859-1").replace("\r", "").replace("\t", "")
+            var = f.read().decode(self.Encoding).replace("\r", "").replace("\t", "")
         return var
 class FileLength(object):
     def __new__(cls, FileString=None):
